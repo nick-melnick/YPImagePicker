@@ -187,7 +187,7 @@ public class FSCameraVC: UIViewController, UIGestureRecognizerDelegate {
                     }
                     
                     // Flip image if taken form the front camera.
-                    if let device = self.device, let cgImg = image.cgImage, device.position == .front {
+                    if let device = self.device, device.position == .front {
                         image = self.flipImage(image: image)
                     }
                     

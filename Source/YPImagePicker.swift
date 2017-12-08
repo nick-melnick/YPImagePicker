@@ -104,6 +104,19 @@ public class YPImagePicker: UINavigationController {
             }
         }
     }
+    
+    var oldStatusBarStyle: UIStatusBarStyle!
+    
+    override public func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        oldStatusBarStyle = UIApplication.shared.statusBarStyle
+        UIApplication.shared.statusBarStyle = .default
+    }
+    
+    override public func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.shared.statusBarStyle = oldStatusBarStyle
+    }
 }
 
 func thunbmailFromVideoPath(_ path: URL) -> UIImage {
