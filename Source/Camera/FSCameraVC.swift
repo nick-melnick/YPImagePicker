@@ -285,7 +285,13 @@ class YPPermissionDeniedPopup {
 extension FSCameraVC: PermissionCheckable {
     
     func checkPermission() {
-        checkPermissionToAccessVideo { _ in }
+        checkPermissionToAccessVideo { [weak self] value in
+            if value == true {
+                self?.isPreviewSetup = false
+                self?.setupCaptureSession()
+                self?.startCamera()
+            }
+        }
     }
     
     func doAfterPermissionCheck(block:@escaping () -> Void) {

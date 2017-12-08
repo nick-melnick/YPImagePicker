@@ -272,5 +272,6 @@ public class FSBottomPager: UIViewController, UIScrollViewDelegate {
         }
         let currentMenuItem = v.header.menuItems[page]
         currentMenuItem.select()
+        delegate?.pagerDidSelectController(controllers[page])
     }
 }
